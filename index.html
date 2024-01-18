@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotation Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .widget {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .employee-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .employee {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .take-call-button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="widget">
+  <h2>Rotation Tracker</h2>
+  <ul class="employee-list" id="employeeList">
+    <!-- Employee items will be dynamically added here -->
+  </ul>
+</div>
+
+<script>
+  // Fixed list of 5 employees
+  let employees = ['Cam', 'Dave', 'Rochelle', 'Danielle', 'Travis'];
+
+  // Function to initialize the employee list
+  function initEmployeeList() {
+    const employeeList = document.getElementById('employeeList');
+    employeeList.innerHTML = ''; // Clear existing list
+
+    // Add each employee to the list
+    employees.forEach((employee, index) => {
+      const listItem = document.createElement('li');
+      listItem.className = 'employee';
+
+      // Employee name
+      const nameElement = document.createElement('span');
+      nameElement.textContent = employee;
+      listItem.appendChild(nameElement);
+
+      // Take Call button for each employee
+      const button = document.createElement('button');
+      button.className = 'take-call-button';
+      button.textContent = 'Take Call';
+      button.addEventListener('click', () => handleTakeCall(index));
+      listItem.appendChild(button);
+
+      employeeList.appendChild(listItem);
+    });
+  }
+
+  // Function to handle the "Take Call" button click for a specific employee
+  function handleTakeCall(index) {
+    // Move the selected employee to the bottom of the list
+    const selectedEmployee = employees.splice(index, 1)[0];
+    employees.push(selectedEmployee);
+
+    // Update the employee list
+    initEmployeeList();
+  }
+
+  // Call the function to initialize the employee list
+  initEmployeeList();
+</script>
+
+</body>
+</html>
