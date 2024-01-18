@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rotation Tracker</title>
+  <title>Call Order Tracker</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -53,7 +53,7 @@
 
 <script>
   // Fixed list of 5 employees
-  let employees = ['Cam', 'Dave', 'Rochelle', 'Danielle', 'Travis'];
+  let employees = ['Dave', 'Cam', 'Rochelle', 'Danielle', 'Travis'];
 
   // Function to initialize the employee list
   function initEmployeeList() {
@@ -87,8 +87,8 @@
     const selectedEmployee = employees.splice(index, 1)[0];
     employees.push(selectedEmployee);
 
-    // Update the employee list
-    initEmployeeList();
+    // Reload the page for all viewers
+    location.reload(true);
   }
 
   // Call the function to initialize the employee list
